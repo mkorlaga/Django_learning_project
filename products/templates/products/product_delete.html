@@ -6,6 +6,7 @@
 {% block content %}
     <form action="." method="POST"> {% csrf_token %}
         <h1>Do you want to delete the product "{{ object.title }}" which id's "{{ object.id }}"?</h1>
-        <p><input type="submit" value="Delete"/> <a href="{% url 'products:product_detail_view' object.id %}">Cancel</a></p>
+        <p><input class="btn btn-danger mb-4" type="submit" value="Delete"/>
+            <a class="btn btn-outline-info mb-4" href="{% url 'products:product_detail_view' object.id %}">Cancel</a></p>
     </form>
 {% endblock %}

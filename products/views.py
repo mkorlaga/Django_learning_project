@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView, DetailView
 
 from .models import Product
 from .forms import ProductForm
@@ -26,12 +27,20 @@ def product_create_view(request, *args, **kwargs):
     return render(request, 'products/product_create.html', context=context)
 
 
-def product_detail_view(request, *args, **kwargs):
-    obj = get_object_or_404(Product, id=kwargs.get('product_id'))
-    context = {
-        "object": obj
-    }
-    return render(request, 'products/detail.html', context=context)
+# def product_detail_view(request, *args, **kwargs):
+#     obj = get_object_or_404(Product, id=kwargs.get('product_id'))
+#     context = {
+#         "object": obj
+#     }
+#     return render(request, 'products/detail.html', context=context)
+
+
+class ProductDetailView(DetailView):
+    model = Product
+
+    def get(self, request, *args, **kwargs):
+        product = get_object_or_404(Product, id=self.kwargs.get('product_id'))
+        return render(request, template_name=self.template_name, context={'object': product})
 
 
 def product_delete_view(request, *args, **kwargs):
@@ -45,9 +54,19 @@ def product_delete_view(request, *args, **kwargs):
     return render(request, "products/product_delete.html", context=context)
 
 
-def product_list_view(request, *args, **kwargs):
-    queryset = Product.objects.all()
-    context = {
-        'object_list': queryset
-    }
-    return render(request, "products/product_list.html", context=context)
+# def product_list_view(request, *args, **kwargs):
+#     queryset = Product.objects.all()
+#     context = {
+#         'object_list': queryset
+#     }
+#     return render(request, "products/product_list.html", context=context)
+
+
+class ProductListView(ListView):
+    model = Product
+    context_object_name = 'object_list'
+    paginate_by = 5
+
+
+#TODO
+# Dokończyć zmianę funkcyjnych na klasy
