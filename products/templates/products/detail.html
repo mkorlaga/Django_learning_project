@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <p>This is title of the product <i>[{{ object.id }}]</i> <h1>"<i>{{ object.title }}</i>"</h1><br></p>
+    {% if object.description is not None or object.description != ''%}
+       <p> and here you can find it's description:<br>
+           "{{ object.description }}"</p><br>
+        and it's price: <u>{{ object.price }}</u> USD
+    {% else %}
+        <p>Description coming soon</p>
+    {% endif %}
+
+{% endblock content %}

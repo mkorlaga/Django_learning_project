@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+    {% for instance in object_list %}
+{#        <p>{{ instance.id }} - <a href="{{ instance.get_absolute_url }}">{{ instance.title }}</a></p>#}
+        <p>{{ instance.id }} - <a href="{% url 'products:product_detail_view' instance.id %}">{{ instance.title }}</a></p>
+    {% endfor %}
+{% endblock %}

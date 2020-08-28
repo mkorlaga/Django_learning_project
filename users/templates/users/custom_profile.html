@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>This is profile of <strong>{{ view.kwargs.username }}</strong> user</h1>
+    <div class="content-section">
+        <div class="media-body">
+                <img class="rounded-circle article-img" src="{{ custom.profile.image.url }}">
+                <h2 class="article-title">Username: {{ custom.username }}</h2>
+                {% if custom.first_name %}<p class="article-content">First name: {{ custom.first_name }}</p>{% endif %}
+                {% if custom.last_name %}<p class="article-content">Last name: {{ custom.last_name }}</p>{% endif %}
+                {% if custom.email %}<p class="article-content">Email: {{ custom.email }}</p>{% endif %}
+                {% if custom.date_joined %}<p class="article-content">Date joined: {{ custom.date_joined }}</p>{% endif %}
+                {% if custom.last_login %}<p class="article-content">Last login: {{ custom.last_login }}</p>{% endif %}
+                {% if custom.id %}<p class="article-content">Id: {{ custom.id }}</p>{% endif %}
+                {% if custom.is_stuff %}<p class="article-content">Is stuff: {{ custom.is_staff }}</p>{% endif %}
+
+        </div>
+    </div>
+{% endblock content%}
