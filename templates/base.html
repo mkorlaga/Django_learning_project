@@ -30,7 +30,12 @@
               <a class="nav-item nav-link" href={% url 'blog-home' %}>Home</a>
               <a class="nav-item nav-link" href={% url 'blog-about' %}>About</a>
             </div>
-            <a type="button" class="btn btn-warning" href={% url 'products:product_list_view' %}>Product App</a>
+            {% url 'products:product_list_view' as ListViewURL %}
+            {% if request.path != ListViewURL %}
+                <a type="button" class="btn btn-warning" href={% url 'products:product_list_view' %}>Product App</a>
+            {% else %}
+                <a type="button" class="btn btn-primary" href={% url 'products:product_create_view' %}>Create Product</a>
+            {% endif %}
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
                 {% if user.is_authenticated %}
