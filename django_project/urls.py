@@ -14,12 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.contrib.auth import views as auth_views
 
 from django.conf import settings
 from django.conf.urls.static import static
 
+from blog_app.views import PostListView
 from users import views as user_view
 from users.views import RegisterView
 
@@ -43,6 +44,7 @@ urlpatterns = [
     path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='users/password_reset_confirm.html'), name='password_reset_confirm'),
 
     path('products/', include('products.urls')),
+    # re_path(r'.*', PostListView.as_view(template_name='blog_app/home.html'))
 
 ]
 if settings.DEBUG:

@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>Editing "{{ object.title }}" which id's "{{ object.id }}"</h1>
+    <form method="POST"> {% csrf_token %}
+        {{ form|crispy }}
+        <p><b>Do you confirm changes made to the product "{{ object.title }}" which id's "{{ object.id }}"?</b></p>
+        <p><input class="btn btn-warning mb-4" type="submit" value="Confirm"/>
+            <a class="btn btn-outline-info mb-4" href="{% url 'products:product_detail_view' object.id %}">Cancel</a></p>
+    </form>
+{% endblock %}

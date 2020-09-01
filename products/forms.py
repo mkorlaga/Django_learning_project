@@ -4,7 +4,8 @@ from .models import Product
 
 
 class ProductForm(forms.ModelForm):
-    subtitle = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Your Subtitle"}))    # overriding or adding fileds that are not in the database model object nor in Meta.fields
+    subtitle = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Your Subtitle"}),
+                               required=False)    # overriding or adding fileds that are not in the database model object nor in Meta.fields
 
     class Meta:
         model = Product

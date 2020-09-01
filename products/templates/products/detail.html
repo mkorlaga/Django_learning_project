@@ -12,5 +12,6 @@
     {% endif %}
 
     <p><a class="btn btn-info mb-4" href="{% url 'products:product_list_view' %}">Back to list</a>
+    <a class="btn btn-warning mb-4" href="{% url 'products:product_update_view' object.id %}">Edit</a>
     <a class="btn btn-outline-danger mb-4" href="{% url 'products:product_delete_view' object.id %}">Delete</a></p>
 {% endblock content %}
