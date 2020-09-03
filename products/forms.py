@@ -40,13 +40,13 @@ class ProductForm(forms.ModelForm):
 
 # Raw form class using django mechanics, instead of being pure HTML, but does not compare to ModelForms, so we need to
 # fix all the fields below.  conclusion -> use ModelForm if you have a Model
-class RawProductForm(forms.Form):
-    title = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Your Title"}))
-    description = forms.CharField(required=False,
-                                  widget=forms.Textarea(
-                                      attrs={
-                                          "class": "new-class-name two",
-                                          'rows': 20,
-                                          'id': "my-personal-id",
-                                          "placeholder": "Your Description"}))
-    price = forms.DecimalField(initial=999.99)
+# class RawProductForm(forms.Form):
+#     title = forms.CharField(widget=forms.TextInput(attrs={"placeholder": "Your Title"}))
+#     description = forms.CharField(required=False,
+#                                   widget=forms.Textarea(
+#                                       attrs={
+#                                           "class": "new-class-name two",
+#                                           'rows': 20,
+#                                           'id': "my-personal-id",
+#                                           "placeholder": "Your Description"}))
+#     price = forms.DecimalField(initial=999.99)
